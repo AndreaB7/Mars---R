@@ -1,6 +1,7 @@
-// 1 SETUP //
+// VOID SETUP //
 
 //1 The Rover: point in movement
+
 var myRover = {
   position: [0,0],
   direction: 'N'
@@ -13,18 +14,18 @@ var rover = myRover;
 function goForward(rover) {
   switch(rover.direction) {
     case 'N':
-      rover.position = [0,1];
+      rover.position[1]++;
       //console.log(rover);
       break;
     case 'E':
-      rover.position = [1,0];
+      rover.position[0]++;
       break;
     case 'S':
       //doc original está marcado 1
-      rover.position = [-0,-1];
+      rover.position[1]--;
       break;
     case 'W':
-      rover.position = [-1,-0];
+      rover.position[0]--;
       break;
   }
 }
@@ -32,16 +33,16 @@ function goForward(rover) {
 function goBackwards(rover) {
   switch(rover.direction) {
     case 'N':
-      rover.position = [-0,-1];
+      rover.position[1]--;
       break;
     case 'E':
-      rover.position = [-1,-0];
+      rover.position[0]--;
       break;
     case 'S':
-      rover.position = [0,1];
+      rover.position[1]++;
       break;
     case 'W':
-      rover.position = [1,0];
+      rover.position[0]++;
       break;
     }
   }
@@ -82,18 +83,20 @@ function goLeft(rover) {
 
 //3 Limits of the Grid: resetting the bot to the origin 0,0
 
-  //if(rover.position === [10,10]){
-  //  return rover.position === [0,0];
-  //} else if(rover.position === [-10,-10]){
-  //  return rover.position === [0,0];
-  //} else{}
+  if(rover.position === [10,10]){
+    return rover.position [0,0];
+  } else if(rover.position === [-10,-10]){
+    return rover.position [0,0];
+  } else {
+    return rover.position;
+  }
 
-
+// VOID DRAW //
 //4 Define the movement of the bot
 
 var movement = "fffrfflfffbb";
 
-//function orders(movement){
+//function movement
   for (var i=1 ; i<=movement.length ; i++) {
     switch (movement[i]) {
       case "r":
@@ -108,7 +111,6 @@ var movement = "fffrfflfffbb";
       case "b":
         goBackwards(rover);
         break;
-      //default:
     }
     console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]");
   }
