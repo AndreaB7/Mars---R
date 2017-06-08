@@ -28,6 +28,7 @@ function goForward(rover) {
       rover.position[0]--;
       break;
   }
+  gridControl();
 }
 
 function goBackwards(rover) {
@@ -45,6 +46,7 @@ function goBackwards(rover) {
       rover.position[0]++;
       break;
     }
+    gridControl();
   }
 
 function goRight(rover) {
@@ -83,13 +85,17 @@ function goLeft(rover) {
 
 //3 Limits of the Grid: resetting the bot to the origin 0,0
 
-  if(rover.position === [10,10]){
-    return rover.position [0,0];
-  } else if(rover.position === [-10,-10]){
-    return rover.position [0,0];
-  } else {
-    return rover.position;
-  }
+function gridControl() {
+  if(rover.position[0]< 0){
+    rover.position[0] = 0;
+  } else if(rover.position[0]>10){
+    rover.position[0] = 0;
+  } else if (rover.position[1]<0){
+    rover.position[1] = 0;
+  } else if(rover.position[1]>10){
+    rover.position[1] = 0;
+  } else {}
+}
 
 // VOID DRAW //
 //4 Define the movement of the bot
